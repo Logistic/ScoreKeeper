@@ -1,0 +1,40 @@
+## Interface: 30300
+## Title: ScoreKeeper
+## Notes: Alternative to GearScore
+## Version: 1.0
+## Author: Logistic-Mal'Ganis
+## SavedVariables: ScoreKeeper_Database, ScoreKeeper_LocalizationCache, ScoreKeeper_Settings, ScoreKeeper_LastVersion
+
+ScoreKeeper.lua
+Functions.lua
+
+CharacterObject.lua
+Commands.lua
+DatabaseObject.lua
+ItemObject.lua
+Object.lua
+SettingsObject.lua
+Ui.lua
+Hooks.lua
+Events.lua
+
+Localization.lua
+locales\ScoreKeeper_deDE.lua
+locales\ScoreKeeper_esMX.lua
+locales\ScoreKeeper_ruRU.lua
+locales\ScoreKeeper_enUS.lua
+locales\ScoreKeeper_frFR.lua
+locales\ScoreKeeper_zhCN.lua
+locales\ScoreKeeper_esES.lua
+locales\ScoreKeeper_koKR.lua
+
+ui\OptionsFrame.xml
+ui\CharacterScoreFrame.xml
+ui\InspectCharacterScoreFrame.xml
+ui\CharacterFrame\InspectUI.xml
+ui\CharacterFrame\InspectPaperDollFrame.xml
+ui\CharacterFrame\SKInspectCharacterScoreFrame.xml
+
+scoreAlgorithms\Total.lua
+scoreAlgorithms\Average.lua
+scoreAlgorithms\GearScore.lua
