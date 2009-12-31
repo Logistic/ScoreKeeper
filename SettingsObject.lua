@@ -10,8 +10,6 @@ function SettingsObject:new(new)
 		--Default Settings
 		new = {
 			disableCharacterScoreTooltip = {
-				Total = true,
-				Average = true
 			},
 			disableItemScoreTooltip = {
 				Total = true,
