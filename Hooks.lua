@@ -3,18 +3,11 @@ setfenv(1, ScoreKeeper)
 LoadAddOn('Blizzard_InspectUI')
 
 GameTooltip:HookScript('OnTooltipSetUnit', function(self)
-	local unitId = self:GetUnit()
-	local character = Database:getCharacterFromUnitId(unitId)
+	local name, unitId = self:GetUnit()
+	local character, name, realm = Database:addCharacterFromUnitId(unitId)
 	if character then
 		self:AddLine(character:getScoreText())
 		self:Show()
-	end
-end)
-
-GameTooltip:HookScript('OnTooltipSetUnit', function(self)
-	local character = Database:addCharacterFromUnitId('mouseover')
-	if character then
-		self:AddLine(character:getScoreText())
 	end
 end)
 

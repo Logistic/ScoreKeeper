@@ -20,8 +20,8 @@ function DatabaseObject:clone(clone)
 end
 
 function DatabaseObject:addCharacter(character, name, realm)
+	realm = realm or GetRealmName()
 	if name and character then
-		realm = realm or GetRealmName()
 		if not self.characters then
 			self.characters = {}
 		end
@@ -31,10 +31,8 @@ function DatabaseObject:addCharacter(character, name, realm)
 		
 		self.characters[realm][name] = character
 		Ui:updateCharacter(character, name, realm)
-		return character, name, realm
-	else
-		return nil, name, realm
 	end
+	return character, name, realm
 end
 
 function DatabaseObject:removeCharacter(name, realm)
@@ -101,8 +99,11 @@ function DatabaseObject:getCharacterFromUnitId(unitId)
 end
 
 function DatabaseObject:addCharacterFromUnitId(unitId)
-	if UnitIsPlayer(unitId) and CanInspect(unitId) then
-		local character = CharacterObject:loadFromUnitId(unitId)
+	if UnitIsPlayer(unitId) then
+		local character
+		if CanInspect(unitId) then
+			character = CharacterObject:loadFromUnitId(unitId)
+		end
 		local name, realm = UnitName(unitId)
 		realm = realm or GetRealmName()
 		return self:addCharacter(character, name, realm)
