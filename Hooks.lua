@@ -50,17 +50,6 @@ hooksecurefunc('InspectPaperDollFrame_SetLevel', function(unit)
 	end
 end)
 
-hooksecurefunc('PaperDollFrame_SetLevel', function(unit)
-	local guild = GetGuildInfo('player')
-	if guild then
-		local PLAYER_GUILD = '<%s>'
-		CharacterGuildText:SetFormattedText(PLAYER_GUILD, guild)
-		CharacterGuildText:Show()
-	else
-		CharacterGuildText:Hide()
-	end
-end)
-
 local oldInspectFrameOnUpdate = InspectFrame:GetScript('OnUpdate')
 InspectFrame:SetScript('OnUpdate', function(self, ...)
 	local wasVisible = UnitIsVisible(self.unit)
