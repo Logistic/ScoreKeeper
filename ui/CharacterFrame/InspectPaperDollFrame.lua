@@ -88,23 +88,25 @@ end
 
 function ScoreKeeper_InspectPaperDollItemSlotButton_OnEnter(self)
 	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+	local set = false
 	local character = ScoreKeeper_InspectFrame.character
-	if not character then
-		return
+	if character then
+		local item = character:getItem(self.slotName)
+		if item then
+			local link = ScoreKeeper.ItemObject.getLink(item, character:getLevel())
+			if link then
+				GameTooltip:SetHyperlink(link)
+				set = true
+			end
+		end
 	end
-	local item = character:getItem(self.slotName)
-	if not item then
-		return
-	end
-	local link = ScoreKeeper.ItemObject.getLink(item, character:getLevel())
-	if not link then
+	
+	if not set then
 		local text = _G[strupper(self.slotName)]
 		if self.checkRelic and character:hasRelicSlot() then
 			text = _G["RELICSLOT"]
 		end
 		GameTooltip:SetText(text)
-	else
-		GameTooltip:SetHyperlink(link)
 	end
 	CursorUpdate(self)
 end
