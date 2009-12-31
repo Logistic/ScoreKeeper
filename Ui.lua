@@ -3,16 +3,6 @@ Ui = {}
 
 function Ui:updateCharacter(character, name, realm)
 	realm = realm or GetRealmName()
-	
-	local tooltipName, tooltipUnit = GameTooltip:GetUnit()
-	if tooltipUnit and UnitIsPlayer(tooltipUnit) then
-		local tooltipName, tooltipRealm = UnitName(tooltipUnit)
-		tooltipRealm = tooltipRealm or GetRealmName()
-		if tooltipName == name and tooltipRealm == realm then
-			GameTooltip:SetUnit(tooltipUnit)
-		end
-	end
-	
 	if ScoreKeeper_InspectFrame:IsShown()
 	   and ScoreKeeper_InspectFrame.characterName == name
 	   and ScoreKeeper_InspectFrame.characterRealm == realm

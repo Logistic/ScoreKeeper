@@ -2,10 +2,6 @@ setfenv(1, ScoreKeeper)
 eventFrame = CreateFrame('Frame')
 events = {}
 
-function events:UPDATE_MOUSEOVER_UNIT()
-	Database:addCharacterFromUnitId('mouseover')
-end
-
 function events:PLAYER_TARGET_CHANGED()
 	local character, name, realm = Database:addCharacterFromUnitId('target')
 	if character and name and realm and ScoreKeeper_InspectFrame:IsShown() then

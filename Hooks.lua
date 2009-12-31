@@ -11,10 +11,18 @@ GameTooltip:HookScript('OnTooltipSetUnit', function(self)
 	end
 end)
 
-ItemRefTooltip:HookScript("OnTooltipSetItem", function(tooltip, ...)
-	local name, link = tooltip:GetItem()
+GameTooltip:HookScript('OnTooltipSetUnit', function(self)
+	local character = Database:addCharacterFromUnitId('mouseover')
+	if character then
+		self:AddLine(character:getScoreText())
+	end
+end)
+
+GameTooltip:HookScript("OnTooltipSetItem", function(self)
+	local name, link = self:GetItem()
 	local item = ItemObject:loadFromLink(link)
-	if item then
+	local equipLoc = ItemObject.getEquipLoc(item)
+	if item and equipLoc and equipLoc ~= '' then
 		self:AddLine(ItemObject.getScoreText(item))
 		self:Show()
 	end
